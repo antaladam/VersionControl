@@ -19,7 +19,6 @@ namespace Hetedikhazi
         {
             InitializeComponent();
             label1.Text = re.LastName; // label1
-            label2.Text = re.FirstName; // label2
             button1.Text = re.Add; // button1
 
             listBox1.DataSource = users;
@@ -31,8 +30,7 @@ namespace Hetedikhazi
         {
             var u = new User()
             {
-                LastName = textBox1.Text,
-                FirstName = textBox2.Text
+                FullName = textBox1.Text,
             };
             users.Add(u);
         }
