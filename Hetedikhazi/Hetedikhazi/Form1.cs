@@ -15,6 +15,9 @@ namespace Hetedikhazi
         public Form1()
         {
             InitializeComponent();
+            label1.Text = re.LastName; // label1
+            label2.Text = re.FirstName; // label2
+            button1.Text = re.Add; // button1
         }
     }
 }
