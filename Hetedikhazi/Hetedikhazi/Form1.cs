@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,22 +20,39 @@ namespace Hetedikhazi
         {
             InitializeComponent();
             label1.Text = re.LastName; // label1
-            label2.Text = re.FirstName; // label2
             button1.Text = re.Add; // button1
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
             listBox1.DisplayMember = "FullName";
+            button2.Text = re.Save;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var u = new User()
             {
-                LastName = textBox1.Text,
-                FirstName = textBox2.Text
+                FullName = textBox1.Text,
             };
             users.Add(u);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter writer = new StreamWriter(dlg.FileName);
+
+                foreach (User s in users)
+                {
+                    s.ToString();
+                    writer.WriteLine(s);
+                }
+
+                writer.Close();
+            }
+            
         }
     }
 }
